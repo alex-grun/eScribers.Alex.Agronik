@@ -1,14 +1,10 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using Microsoft.Extensions.Configuration;
 using System.Text.Json;
-using System.Text.Json.Serialization;
-using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Threading.Tasks;
 using LoggerCore;
 using Microsoft.Extensions.Options;
 using eScribers.MicroService.Prividers;
+using eScribers.MicroService.Services;
 
 namespace eScribers.MicroService.Controllers
 {
@@ -33,8 +29,8 @@ namespace eScribers.MicroService.Controllers
         [HttpPost("WriteLog")]
         public async Task<IActionResult> WriteLog()
         {
-            var provider = new LoggerProvider();
-            provider.Error();
+            var service = new LoggerMicroService();
+            service.Write(new LoggerInternal(), 0, "");
 
             return null;
         }
