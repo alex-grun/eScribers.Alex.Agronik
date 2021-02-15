@@ -1,0 +1,10 @@
+version: '3.4'
+
+services:
+  escribers.microservice:
+    image: ${DOCKER_REGISTRY-}escribersmicroservice
+    build:
+      context: .
+      dockerfile: eScribers.MicroService/Dockerfile
+    ports:
+      - 9000:9000
